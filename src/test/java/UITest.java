@@ -20,6 +20,7 @@ public class UITest {
         googlePage.clickSearchButton();
         Assert.assertTrue(googlePage.isSearchLinksFound(bankLink));
         googlePage.openBankPage();
+        bankPage.openInternetBankRates();
         Assert.assertTrue(bankPage.getUSDBuyCurrencyValue() < bankPage.getUSDSellCurrencyValue());
         Assert.assertTrue(bankPage.getEURBuyCurrencyValue() < bankPage.getEURSellCurrencyValue());
     }
