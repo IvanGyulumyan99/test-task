@@ -12,7 +12,7 @@ public class UITest {
     String bankLink = "https://www.open.ru/";
 
     @Test(description = "Проверка курса обмена валют в банке Открытие")
-    void openBankTest() {
+    public void openBankTest() {
         open(googleUrl);
         BankPage bankPage = new BankPage();
         GooglePage googlePage = new GooglePage();

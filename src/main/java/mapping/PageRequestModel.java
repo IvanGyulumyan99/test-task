@@ -2,7 +2,7 @@ package mapping;
 
 import java.util.List;
 
-public class Page {
+public class PageRequestModel {
 
     private int page;
     private int per_page;

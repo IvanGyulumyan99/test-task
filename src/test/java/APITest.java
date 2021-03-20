@@ -1,7 +1,7 @@
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import mapping.Page;
-import mapping.Person;
+import mapping.PageRequestModel;
+import mapping.PersonRequestModel;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -16,23 +16,24 @@ public class APITest {
 
     @Test(description = "Получение списка пользователей.")
     public void getUsers() {
-        Page page = given()
+        PageRequestModel pageRequestModel = given()
                 .when().get("/api/users?page=2")
-                .then().statusCode(200).extract().body().as(Page.class);
-        Assert.assertNotNull(page);
+                .then().statusCode(200).extract().body().as(PageRequestModel.class);
+        Assert.assertNotNull(pageRequestModel);
 
-        System.out.println(page);
+        //System.out.println(page);
     }
 
     @Test(description = "Создание пользователя и проверка ответа.")
     public void createPerson() {
-        Person sendPerson = new Person("morpheus", "leader");
-        Person receivedPerson = given()
+        PersonRequestModel sendPerson = new PersonRequestModel("morpheus", "leader");
+        PersonRequestModel receivedPerson = given()
                 .contentType(ContentType.JSON).body(sendPerson)
                 .when().post("/api/users")
-                .then().statusCode(201).extract().body().as(Person.class);
-        Assert.assertEquals(sendPerson, receivedPerson);
+                .then().statusCode(201).extract().body().as(PersonRequestModel.class);
+        Assert.assertEquals(sendPerson.getName(), receivedPerson.getName());
+        Assert.assertEquals(sendPerson.getJob(), receivedPerson.getJob());
 
-        System.out.println(receivedPerson);
+        //System.out.println(receivedPerson);
     }
 }
