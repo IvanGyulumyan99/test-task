@@ -1,12 +1,10 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class BankPage {
+public class OpenBankPage {
 
     public void openInternetBankRates() {
         $x("//span[contains(@class,'main-page-exchange__dropdown-title-highlight')]")
@@ -18,22 +16,22 @@ public class BankPage {
     }
 
     public float getUSDBuyCurrencyValue() {
-        String USDBuyCurrency = $(By.xpath("//tr[2]//td[2]//span")).getText().replace(',', '.');
+        String USDBuyCurrency = $x("//tr[2]//td[2]//span").getText().replace(',', '.');
         return Float.parseFloat(USDBuyCurrency);
     }
 
     public float getUSDSellCurrencyValue() {
-        String USDSellCurrency = $(By.xpath("//tr[2]//td[4]//span")).getText().replace(',', '.');
+        String USDSellCurrency = $x("//tr[2]//td[4]//span").getText().replace(',', '.');
         return Float.parseFloat(USDSellCurrency);
     }
 
     public float getEURBuyCurrencyValue() {
-        String EURBuyCurrency = $(By.xpath("//tr[3]//td[2]//span")).getText().replace(',', '.');
+        String EURBuyCurrency = $x("//tr[3]//td[2]//span").getText().replace(',', '.');
         return Float.parseFloat(EURBuyCurrency);
     }
 
     public float getEURSellCurrencyValue() {
-        String EURSellCurrency = $(By.xpath("//tr[3]//td[4]//span")).getText().replace(',', '.');
+        String EURSellCurrency = $x("//tr[3]//td[4]//span").getText().replace(',', '.');
         return Float.parseFloat(EURSellCurrency);
     }
 

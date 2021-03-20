@@ -6,8 +6,8 @@ import com.codeborne.selenide.Condition;
 import org.openqa.selenium.*;
 
 public class GooglePage {
-    public void enterSearchQuery(String searchQuery) {
-        $x("//input[@name='q']").setValue(searchQuery);
+    public void enterSearchTerm(String searchTerm) {
+        $x("//input[@name='q']").setValue(searchTerm);
     }
 
     public void clickSearchButton() {
