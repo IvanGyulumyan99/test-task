@@ -2,6 +2,7 @@ import org.testng.annotations.Test;
 import pages.GooglePage;
 import pages.OpenBankPage;
 
+
 import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertTrue;
 
@@ -22,7 +23,11 @@ public class OpenBankUITest {
         googlePage.openBankPage();
         OpenBankPage bankPage = new OpenBankPage();
         bankPage.openInternetBankRates();
-        assertTrue(bankPage.getUSDBuyCurrencyValue() < bankPage.getUSDSellCurrencyValue());
-        assertTrue(bankPage.getEURBuyCurrencyValue() < bankPage.getEURSellCurrencyValue());
+        bankPage.getAllRates();
+        assertTrue(bankPage.getPreferentialUSDBuyCurrencyValue() < bankPage.getPreferentialUSDSellCurrencyValue());
+        assertTrue(bankPage.getPreferentialEURBuyCurrencyValue() < bankPage.getPreferentialEURSellCurrencyValue());
+        assertTrue(bankPage.getStandardUSDBuyCurrencyValue() < bankPage.getStandardUSDSellCurrencyValue());
+        assertTrue(bankPage.getStandardEURBuyCurrencyValue() < bankPage.getStandardEURSellCurrencyValue());
+
     }
 }
